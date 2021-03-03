@@ -1,0 +1,103 @@
+@import '../../../../scss/abstracts/mixins';
+@import '../../../../scss/abstracts/variables';
+
+
+.main
+{
+    @include centrar-contenido;
+    height: 110vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: transparentize($color: black, $amount: 0.75);
+
+    .content
+    {
+        width: 40vw;
+        background-color: white;
+        border: solid 1px $colorCardBorder;
+        border-radius: 20px;
+        @include card-shadow;
+    }
+}
+
+.campo
+{
+    font-size: 2.5vh;
+    display: flex;
+    flex-direction: column;
+    margin: 4vh 3vw;
+
+    input
+    {
+        font-size: 2.5vh;
+    }
+
+    .ng-invalid
+    {
+        border-left: solid 5px #D51545;
+    }
+
+    .ng-pristine
+    {
+        border-left: solid 5px #38C513;
+    }
+
+    .ng-touched
+    {
+        border-left: solid 5px #D51545;
+    }
+
+    .ng-valid
+    {
+        border-left: solid 5px #38C513;
+    }
+
+    .errorEnValidacion
+    {
+        background-color: #F48EA7;
+        color: #A20930;
+        padding: 0.5vh 0.5vw;
+    }
+
+    
+}
+
+button
+{
+    @include basic-button;
+    font-size: 2vh;
+    margin: 3vh 1vw;    
+}
+
+.buttons
+{
+    display: flex;
+    justify-content: flex-end;
+
+    .aceptar
+    {
+        background-color: $colorBoton;
+
+        &:hover
+        {
+            background-color: $colorBotonHover;
+        }
+
+        &:disabled
+        {
+            background-color: $colorBotonDeshabilitado;
+        }
+    }
+
+    .cancelar
+    {
+        background-color: $colorBotonCancelar;
+
+        &:hover
+        {
+            background-color: $colorBotonCancelarHover;
+            color: $colorTextoBotonHover;
+        }
+    }
+}

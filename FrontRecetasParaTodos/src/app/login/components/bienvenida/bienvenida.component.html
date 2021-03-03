@@ -1,0 +1,14 @@
+<div class="main">
+    <h1>BIENVENID@ A</h1>
+    <h1>RECETAS PARA TODOS</h1>
+    <img src="../../../../assets/img/logo.png" alt="Logo de la página">
+    <div class="buttons">
+        <button class="pressed" (click)="creaUsuario()">Crear usuario</button>
+        <button class="pressed" (click)="cambiarClickado()">Ya tengo usuario</button>
+        <button class="pressed" (click)="loginInvitado()">Invitado</button>
+    </div>
+
+    <div class="modal" *ngIf="clickado">
+        <app-user-login (eventEmmiter)="cambiarClickado()"></app-user-login>
+    </div>
+</div>

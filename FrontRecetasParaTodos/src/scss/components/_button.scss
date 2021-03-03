@@ -1,0 +1,17 @@
+.pressed
+{
+    outline: none;
+    border: none;
+    box-shadow: 0 4px $colorBotonHover;
+}
+
+.pressed:hover
+{
+    box-shadow: 0 4px $colorSombraBoton;
+}
+
+.pressed:active
+{
+    box-shadow: 0 2px $colorSombraBoton;
+    transform: translateY(2px);
+}
