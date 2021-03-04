@@ -14,7 +14,7 @@ import com.RecetasParaTodos.security.model.User;
 import com.RecetasParaTodos.security.repo.UserRepository;
 
 @Component
-public class DtoConverter
+public class SecurityDtoConverter
 {
 	@Autowired
 	private NacionalidadRepository nacionalidadRepo;

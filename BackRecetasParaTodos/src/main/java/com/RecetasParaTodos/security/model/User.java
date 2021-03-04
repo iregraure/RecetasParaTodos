@@ -119,16 +119,6 @@ public class User implements UserDetails
 		this.lastLoginAttempt = lastLoginAttempt;
 	}
 
-	public LocalDateTime getlastLoginAttempt()
-	{
-		return lastLoginAttempt;
-	}
-
-	public void setlastLoginAttempt(LocalDateTime lastLoginAttempt)
-	{
-		this.lastLoginAttempt = lastLoginAttempt;
-	}
-
 	public boolean isLocked()
 	{
 		return locked;

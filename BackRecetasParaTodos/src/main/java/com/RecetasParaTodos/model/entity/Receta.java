@@ -51,18 +51,18 @@ public class Receta
 		super();
 	}
 
-//	public Receta(String nombre, List<String> ingredientes, String preparacion, String tiempoPreparacion, int raciones,
-//			boolean microondas, Categoria categoria, Usuario usaurio)
-//	{
-//		this.nombre = nombre;
-//		this.ingredientes = ingredientes;
-//		this.preparacion = preparacion;
-//		this.tiempoPreparacion = tiempoPreparacion;
-//		this.raciones = raciones;
-//		this.microondas = microondas;
-//		this.categoria = categoria;
-//		this.usuario = usuario;
-//	}
+	public Receta(String nombre, List<String> ingredientes, String preparacion, String tiempoPreparacion, int raciones,
+			boolean microondas, Categoria categoria, Usuario usaurio)
+	{
+		this.nombre = nombre;
+		this.ingredientes = ingredientes;
+		this.preparacion = preparacion;
+		this.tiempoPreparacion = tiempoPreparacion;
+		this.raciones = raciones;
+		this.microondas = microondas;
+		this.categoria = categoria;
+		this.usuario = usuario;
+	}
 
 	// Métodos get y set
 	public String getNombre()

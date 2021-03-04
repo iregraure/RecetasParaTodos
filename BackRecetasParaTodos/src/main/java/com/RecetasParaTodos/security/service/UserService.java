@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.RecetasParaTodos.model.entity.Usuario;
 import com.RecetasParaTodos.repo.UsuarioRepository;
 import com.RecetasParaTodos.security.model.User;
-import com.RecetasParaTodos.security.model.dto.DtoConverter;
+import com.RecetasParaTodos.security.model.dto.SecurityDtoConverter;
 import com.RecetasParaTodos.security.model.dto.SignUpDto;
 import com.RecetasParaTodos.security.model.dto.UserDto;
 import com.RecetasParaTodos.security.repo.UserRepository;
@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService
 	private UsuarioRepository usuarioRepo;
 
 	@Autowired
-	private DtoConverter converter;
+	private SecurityDtoConverter converter;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException

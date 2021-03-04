@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.RecetasParaTodos.model.dto.RecetaDto;
 import com.RecetasParaTodos.model.entity.Receta;
+import com.RecetasParaTodos.model.enums.Categoria;
 import com.RecetasParaTodos.service.RecetaService;
 
 @CrossOrigin
@@ -35,7 +37,7 @@ public class RecetaController
 		ResponseEntity<?> response;
 		try
 		{
-			Receta receta = service.getReceta(id);
+			RecetaDto receta = service.getReceta(id);
 			response = ResponseEntity.ok(receta);
 		}
 		catch (Exception e)
@@ -54,13 +56,13 @@ public class RecetaController
 	}
 
 	// Obtener todas las recetas de una categoria
-	@GetMapping(path = "/{categoria}")
+	@GetMapping(path = "/categoria/{categoria}")
 	public ResponseEntity<?> getRecetasCategoria(@PathVariable String categoria)
 	{
 		ResponseEntity<?> response;
 		try
 		{
-			List<Receta> recetas = service.getRecetasCategoria(categoria);
+			List<RecetaDto> recetas = service.getRecetasCategoria(categoria);
 			response = ResponseEntity.ok(recetas);
 		}
 		catch (Exception e)
@@ -85,7 +87,7 @@ public class RecetaController
 		ResponseEntity<?> response;
 		try
 		{
-			List<Receta> recetas = service.getRecetasMicroondas();
+			List<RecetaDto> recetas = service.getRecetasMicroondas();
 			response = ResponseEntity.ok(recetas);
 		}
 		catch (Exception e)
@@ -110,7 +112,7 @@ public class RecetaController
 		ResponseEntity<?> response;
 		try
 		{
-			List<Receta> recetas = service.getRecetasUsuario(username);
+			List<RecetaDto> recetas = service.getRecetasUsuario(username);
 			response = ResponseEntity.ok(recetas);
 		}
 		catch (Exception e)
@@ -135,7 +137,7 @@ public class RecetaController
 		ResponseEntity<?> response;
 		try
 		{
-			Receta receta = service.addReceta(sent);
+			RecetaDto receta = service.addReceta(sent);
 			response = ResponseEntity.ok(receta);
 		}
 		catch (Exception e)
@@ -155,12 +157,12 @@ public class RecetaController
 
 	// Modificar una receta
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateReceta(@PathVariable int id, @RequestBody Receta sent)
+	public ResponseEntity<?> updateReceta(@PathVariable int id, @RequestBody RecetaDto sent)
 	{
 		ResponseEntity<?> response;
 		try
 		{
-			Receta receta = service.updateReceta(id, sent);
+			RecetaDto receta = service.updateReceta(id, sent);
 			response = ResponseEntity.ok(receta);
 		}
 		catch (Exception e)
@@ -185,7 +187,7 @@ public class RecetaController
 		ResponseEntity<?> response;
 		try
 		{
-			Receta receta = service.deleteReceta(id);
+			RecetaDto receta = service.deleteReceta(id);
 			response = ResponseEntity.ok(receta);
 		}
 		catch (Exception e)
