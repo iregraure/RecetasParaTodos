@@ -11,47 +11,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.RecetasParaTodos.model.entity.Nacionalidad;
-import com.RecetasParaTodos.repo.NacionalidadRepository;
+import com.RecetasParaTodos.model.entity.Categoria;
+import com.RecetasParaTodos.repo.CategoriaRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/nacionalidad")
-public class NacionalidadController
-{
+@RequestMapping("/categoria")
+public class CategoriaController {
+
 	@Autowired
-	private NacionalidadRepository repo;
-
-	// Obtener todas las nacionalidades ordenadas alfabeticamente
+	private CategoriaRepository repo;
+	
+	// Obtener todas las categorias
 	@GetMapping
-	public ResponseEntity<?> getNacionalidad()
+	public ResponseEntity<?> getCategorias()
 	{
 		ResponseEntity<?> response;
 		try
 		{
-			List<Nacionalidad> nacionalidades = repo.findAllOrderedByDescripcion();
-			response = ResponseEntity.ok(nacionalidades);
+			List<Categoria> categorias = (List<Categoria>) repo.findAll();
+			response = ResponseEntity.ok(categorias);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			response = ResponseEntity.badRequest().body(e.getMessage());
 		}
 		return response;
 	}
-
-	// Crear una nacionalidad
+	
+	// Crear una categoría
 	@PostMapping
-	public ResponseEntity<?> addNacionalidad(@RequestBody Nacionalidad nacionalidad)
+	public ResponseEntity<?> addCategoria(@RequestBody Categoria categoria)
 	{
 		ResponseEntity<?> response;
 		try
 		{
-			response = ResponseEntity.ok(repo.save(nacionalidad));
+			response = ResponseEntity.ok(repo.save(categoria));
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			response = ResponseEntity.badRequest().body(e.getMessage());
 		}
 		return response;
 	}
+	
 }

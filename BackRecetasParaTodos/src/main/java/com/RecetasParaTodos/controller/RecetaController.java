@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.RecetasParaTodos.model.dto.RecetaDto;
 import com.RecetasParaTodos.model.entity.Receta;
-import com.RecetasParaTodos.model.enums.Categoria;
 import com.RecetasParaTodos.service.RecetaService;
 
 @CrossOrigin

@@ -14,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.RecetasParaTodos.model.enums.Categoria;
-
 @Entity
 public class Receta
 {
@@ -38,7 +36,8 @@ public class Receta
 
 	private boolean microondas;
 
-	@Enumerated(EnumType.STRING)
+	@ManyToOne
+	@JoinColumn(name = "categoria", foreignKey = @ForeignKey(name = "FK_CATEGORIA_RECETA"))
 	private Categoria categoria;
 
 	@ManyToOne

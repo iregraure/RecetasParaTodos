@@ -2,7 +2,7 @@ package com.RecetasParaTodos.model.dto;
 
 import java.util.List;
 
-import com.RecetasParaTodos.model.enums.Categoria;
+import com.RecetasParaTodos.model.entity.Categoria;
 
 public class NewRecetaDto {
 

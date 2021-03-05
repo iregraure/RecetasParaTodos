@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.RecetasParaTodos.model.dto.DtoConverter;
 import com.RecetasParaTodos.model.dto.RecetaDto;
+import com.RecetasParaTodos.model.entity.Categoria;
 import com.RecetasParaTodos.model.entity.Receta;
 import com.RecetasParaTodos.model.entity.Usuario;
-import com.RecetasParaTodos.model.enums.Categoria;
+import com.RecetasParaTodos.repo.CategoriaRepository;
 import com.RecetasParaTodos.repo.RecetaRepository;
 import com.RecetasParaTodos.repo.UsuarioRepository;
 
@@ -23,6 +24,9 @@ public class RecetaService
 
 	@Autowired
 	private UsuarioRepository usuarioRepo;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepo;
 
 	// Servicio
 	@Autowired
@@ -48,7 +52,7 @@ public class RecetaService
 	// excepción si no hay ninguna
 	public List<RecetaDto> getRecetasCategoria(String categoria) throws Exception
 	{
-		Categoria cat = Categoria.valueOf(categoria.toUpperCase());
+		Categoria cat = categoriaRepo.findCategoriaByDescripcion(categoria);
 		List<Receta> recetas = recetaRepo.findRecetaByCategoria(cat);
 		if (recetas.size() == 0)
 		{

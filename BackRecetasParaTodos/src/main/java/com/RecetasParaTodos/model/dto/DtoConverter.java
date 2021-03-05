@@ -30,9 +30,6 @@ public class DtoConverter {
 				receta.getTiempoPreparacion(), receta.getRaciones(), receta.isMicroondas(), receta.getCategoria(), 
 				receta.getUsuario().getNombreUsuario());
 		return dto;
-	}
-	
-	// Obtener nueva receta a partir del DTO
-	
+	}	
 	
 }

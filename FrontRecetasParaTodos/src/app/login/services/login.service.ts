@@ -24,9 +24,9 @@ export class LoginService {
     this.user = 
     {
       username: 'invitado',
-      pass: 'invitado'
+      pass: 'Invitado'
     };
-    return this.http.post<any>(environment.loginUrl, this.user);
+    return this.http.post(environment.loginUrl, this.user, { responseType: 'text' });
   }
 
   usuarioLogin(formUser: User): Observable<any>

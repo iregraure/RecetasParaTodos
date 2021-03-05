@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.RecetasParaTodos.model.entity.Categoria;
 import com.RecetasParaTodos.model.entity.Receta;
 import com.RecetasParaTodos.model.entity.Usuario;
-import com.RecetasParaTodos.model.enums.Categoria;
 
 @Repository
 public interface RecetaRepository extends CrudRepository<Receta, Integer>
