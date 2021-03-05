@@ -1,0 +1,11 @@
+@import '../abstracts/variables';
+
+nav
+{
+    border: solid 1px $navBorder;
+    background-color: $navBackground;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 10vh;
+}

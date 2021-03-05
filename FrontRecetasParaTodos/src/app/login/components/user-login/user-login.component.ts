@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../interfaces/userInterface';
+import { AvisosService } from '../../../services/avisos.service';
 import { LoginService } from '../../services/login.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-user-login',
@@ -15,7 +17,9 @@ export class UserLoginComponent implements OnInit {
   @Output() eventEmmiter: EventEmitter<null> = new EventEmitter<null>();
 
   constructor(private loginService: LoginService,
-              private router: Router) { }
+              private router: Router,
+              public avisos: AvisosService,
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void 
   {
@@ -28,14 +32,22 @@ export class UserLoginComponent implements OnInit {
 
   aceptar()
   {
-    this.loginService.usuarioLogin(this.user);
+    this.loginService.usuarioLogin(this.user).subscribe((res) =>
+      {
+        if(res != null && res != undefined)
+        {
+          this.router.navigate(['/signUp']);
+          this.tokenStorage.saveToken(res);
+          this.tokenStorage.saveUser(this.user);
+        }
+      });
 
-    this.router.navigate(['/signUp']);
   }
 
   cancelar()
   {
     this.eventEmmiter.emit(null);
+    this.router.navigate(['/bienvenida']);
   }
 
 }

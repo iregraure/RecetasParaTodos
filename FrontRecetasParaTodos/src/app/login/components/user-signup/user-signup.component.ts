@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Nacionalidad } from '../../interfaces/nacionalidadInterface';
 import { User } from '../../interfaces/userInterface';
 import { Usuario } from '../../interfaces/usuarioInterface';
+import { AvisosService } from '../../../services/avisos.service';
 import { LoginService } from '../../services/login.service';
 import { NacionalidadService } from '../../services/nacionalidad.service';
 
@@ -20,7 +21,8 @@ export class UserSignupComponent implements OnInit {
 
   constructor(private nacionalidadService: NacionalidadService,
               private router: Router,
-              private loginService: LoginService) { }
+              private loginService: LoginService,
+              private avisos: AvisosService) { }
 
   // Cuando se inicia el componente se cargan las nacionalidades y se inicializa el formulario
   ngOnInit(): void {
@@ -64,16 +66,10 @@ export class UserSignupComponent implements OnInit {
       genero: this.signUpForm.value.genero
     }
     
-    this.loginService.registraUsuario(this.usuario).subscribe(resul =>
+    this.loginService.registraUsuario(this.usuario).subscribe((resul: any) =>
       {
-        this.loginService.usuarioLogin(resul).subscribe(respuesta =>
-          {
-            console.log(respuesta)
-          });
-      },
-      error => 
-      {
-        console.log(error);
+        this.avisos.usuarioCreado();
+        this.router.navigate(['/login']);
       });
   }
 

@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Md5 } from 'ts-md5/dist/md5';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class LoginService {
   usuario: Usuario;
   clickado: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private tokenStorage: TokenStorageService) { }
 
   invitadoLogin(): Observable<any>
   {
@@ -24,17 +26,16 @@ export class LoginService {
       username: 'invitado',
       pass: 'invitado'
     };
-
     return this.http.post<any>(environment.loginUrl, this.user);
   }
 
   usuarioLogin(formUser: User): Observable<any>
   {
     this.user = formUser;
-    return this.http.post<any>(environment.loginUrl, this.user);
+    return this.http.post(environment.loginUrl, this.user, { responseType: 'text' });
   }
 
-  registraUsuario(formUsuario: Usuario)
+  registraUsuario(formUsuario: Usuario): Observable<any>
   {
     this.usuario = formUsuario;
     return this.http.post<User>(environment.signUpUrl, this.usuario);

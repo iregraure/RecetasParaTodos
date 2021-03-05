@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AvisosService } from '../../../services/avisos.service';
 
 import { LoginService } from '../../services/login.service';
 
@@ -11,6 +12,7 @@ import { LoginService } from '../../services/login.service';
 export class BienvenidaComponent implements OnInit {
 
   clickado: boolean;
+  creado: boolean;
 
   constructor(private loginService: LoginService,
               private router: Router) { }
@@ -18,6 +20,7 @@ export class BienvenidaComponent implements OnInit {
   ngOnInit(): void 
   {
     this.clickado = false;
+    this.creado = false;
   }
 
   cambiarClickado()
@@ -32,7 +35,8 @@ export class BienvenidaComponent implements OnInit {
 
   loginInvitado()
   {
-    
+    this.loginService.invitadoLogin();
+    this.router.navigate(['/signUp']);
   }
 
 }

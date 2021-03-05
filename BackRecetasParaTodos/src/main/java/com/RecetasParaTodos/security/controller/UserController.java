@@ -14,7 +14,7 @@ import com.RecetasParaTodos.security.model.dto.SignUpDto;
 import com.RecetasParaTodos.security.model.dto.UserDto;
 import com.RecetasParaTodos.security.service.UserService;
 
-@CrossOrigin(exposedHeaders = "Authorization")
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController

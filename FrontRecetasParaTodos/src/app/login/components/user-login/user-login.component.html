@@ -1,6 +1,9 @@
 <div class="main">
     <div class="content">
         <h1>Accede</h1>
+        <div class="usuarioCreado" *ngIf="avisos.usuCreado">
+            <p>El usuario se ha creado correctamente</p>
+        </div>
         <form #loginForm="ngForm" (ngSubmit)="aceptar()">
             <div class="campo">
                 <label for="username"><b>Nombre de usuario</b></label>
