@@ -19,6 +19,11 @@ public class Categoria {
 	public Categoria() {
 		super();
 	}
+	
+	public Categoria(String descripcion)
+	{
+		this.descripcion = descripcion;
+	}
 
 	// Métodos get y set
 	public String getDescripcion() {

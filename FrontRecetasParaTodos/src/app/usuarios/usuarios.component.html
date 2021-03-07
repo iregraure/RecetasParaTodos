@@ -1,0 +1,46 @@
+<div class="main">
+    <div class="card">
+        <div class="card-header">
+            <h2>Mis datos</h2>
+        </div>
+        <div class="card-content">
+            <form #loginForm="ngForm" (ngSubmit)="actualizar()">
+                <div class="campo">
+                    <label for="nombre"><b>Nombre completo</b></label>
+                    <input type="text" required name="nombre" placeholder="Nombre completo"
+                        [(ngModel)]="usuario.nombre" #nombre="ngModel">
+                    <div [hidden]="nombre.valid || nombre.untouched" class="errorEnValidacion">
+                        El nombre de usuario es obligatorio
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="nombre"><b>Fecha de nacimiento</b></label>
+                    <input type="text" required name="fechaNacimiento" placeholder="Fecha de nacimiento"
+                        [(ngModel)]="usuario.fechaNacimiento" #fechaNacimiento="ngModel">
+                    <div [hidden]="fechaNacimiento.valid || fechaNacimiento.untouched" class="errorEnValidacion">
+                        La fecha de nacimiento es obligatoria
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="nacionalidad"><b>Nacionalidad</b></label>
+                    <input type="text" required name="nacionalidad" placeholder="Nacionalidad"
+                        [(ngModel)]="usuario.nacionalidad" #nacionalidad="ngModel">
+                    <div [hidden]="nacionalidad.valid || nacionalidad.untouched" class="errorEnValidacion">
+                        La nacionalidad es obligatoria
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="genero"><b>Genero</b></label>
+                    <input type="text" required name="genero" placeholder="Genero"
+                        [(ngModel)]="usuario.genero" #genero="ngModel">
+                    <div [hidden]="genero.valid || genero.untouched" class="errorEnValidacion">
+                        El genero es obligatorio
+                    </div>
+                </div>
+                <div class="card-buttons">
+                    <button class="aceptar" (click)="actualizar()" [disabled]="signUpForm.invalid">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

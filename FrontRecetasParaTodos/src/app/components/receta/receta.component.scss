@@ -1,0 +1,103 @@
+@import 'src/scss/abstracts/mixins';
+@import 'src/scss/abstracts/variables';
+
+.main
+{
+    @include centrar-contenido;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparentize($color: black, $amount: 0.75);
+
+    .content
+    {
+        width: 40vw;
+        height: 60vh;
+        background-color: white;
+        border: solid 1px $colorCardBorder;
+        border-radius: 20px;
+        padding: 3vh 3vw;
+        @include card-shadow;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        h1
+        {
+            width: 100%;
+        }
+
+        h3
+        {
+            font-size: 2.5vh;
+        }
+
+        .izquierda
+        {
+            width: 10vw;
+            font-size: 2vh;
+            padding: 2vh 2vw;
+        }
+        
+        .separacion
+        {
+            border-left: 4px solid green;
+            height: 45vh;
+            margin-top: 1.5vh;
+        }
+        
+        .derecha
+        {
+            font-size: 2vh;
+            padding: 2vh 2vw;
+            width: 20vw;
+
+            .preparacion
+            {
+                margin-top: 6vh;
+            }
+
+            .buttons
+            {
+                display: flex;
+                justify-content: flex-end;
+                
+                button
+                {
+                    @include basic-button;
+                    font-size: 2vh;
+                    margin: 3vh 0.5vw;    
+                }
+    
+                .aceptar
+                {
+                    background-color: $colorBoton;
+            
+                    &:hover
+                    {
+                        background-color: $colorBotonHover;
+                    }
+            
+                    &:disabled
+                    {
+                        background-color: $colorBotonDeshabilitado;
+                    }
+                }
+            
+                .cancelar
+                {
+                    background-color: $colorBotonCancelar;
+            
+                    &:hover
+                    {
+                        background-color: $colorBotonCancelarHover;
+                        color: $colorTextoBotonHover;
+                    }
+                }
+            }
+        }
+
+    }
+}

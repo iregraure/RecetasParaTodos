@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="tabs">
+        <ul class="nav">
+            <li class="navItem" *ngFor="let categoria of categorias" (click)="obtieneRecetasCategoria(categoria.descripcion)">
+                {{categoria.descripcion}}
+            </li>
+        </ul>
+    </div>
+    
+    <div class="sinSeleccionar" *ngIf="seleccionada==null">
+        <h1>Seleccione una categoría para ver las recetas</h1>
+    </div>
+
+    <div class="recetas">
+        <div class="card" *ngFor="let receta of recetas">
+            <div class="card-header">
+                {{receta.nombre}}
+            </div>
+            <div class="card-content">
+                <p>Tiempo de preparacion: {{receta.tiempoPreparacion}}</p>
+                <p>Usuario: {{receta.nombreUsuario}}</p>
+                <div class="card-buttons">
+                    <button (click)="verReceta(receta.id)">Ver todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" *ngIf="visible">
+        <app-receta (mostrarReceta)="mostrar()" [receta]="receta"></app-receta>
+    </div>
+</div>

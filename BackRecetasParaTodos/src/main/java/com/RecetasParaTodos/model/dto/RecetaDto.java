@@ -21,12 +21,12 @@ public class RecetaDto {
 
 	private boolean microondas;
 
-	private Categoria categoria;
+	private String categoria;
 
 	private String nombreUsuario;
 	
 	public RecetaDto(int id, String nombre, List<String> ingredientes, String preparacion, String tiempoPreparacion,
-			int raciones, boolean microondas, Categoria categoria, String nombreUsuario) 
+			int raciones, boolean microondas, String categoria, String nombreUsuario) 
 	{
 		this.id = id;
 		this.nombre = nombre;
@@ -91,11 +91,11 @@ public class RecetaDto {
 		this.microondas = microondas;
 	}
 
-	public Categoria getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 

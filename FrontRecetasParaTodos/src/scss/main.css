@@ -1,3 +1,21 @@
+.pressed {
+  outline: none;
+  border: none;
+  box-shadow: 0 4px #408359; }
 
+.pressed:hover {
+  box-shadow: 0 4px #12532A; }
+
+.pressed:active {
+  box-shadow: 0 2px #12532A;
+  transform: translateY(2px); }
+
+nav {
+  border: solid 1px #FFB96A;
+  background-color: #ffffeb;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 10vh; }
 
 /*# sourceMappingURL=main.css.map */

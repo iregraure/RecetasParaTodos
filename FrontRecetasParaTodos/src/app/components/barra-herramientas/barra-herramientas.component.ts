@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/userInterface';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -8,19 +9,17 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class BarraHerramientasComponent implements OnInit {
 
-  logueado: boolean;
+  user: User;
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  isUserLogged: boolean;
 
-  ngOnInit(): void {
-    if(this.tokenStorage.getUser() == null)
-    {
-      this.logueado = false;
-    }
-    else
-    {
-      this.logueado = true;
-    }
+  constructor(private tokenStorage: TokenStorageService) 
+  { }
+
+  ngOnInit(): void 
+  {
+    this.user = this.tokenStorage.getUser();
+    console.log(this.user)
   }
 
 }

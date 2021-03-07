@@ -106,6 +106,14 @@ public class RecetaService
 	// nombre y lanza una excepción en caso afirmativo
 	public RecetaDto addReceta(Receta sent) throws Exception
 	{
+		// Buscamos la categoria por su descripcion y se la asignamos a la receta
+		Categoria categoria = categoriaRepo.findCategoriaByDescripcion(sent.getCategoria().getDescripcion());
+		if (categoria == null)
+		{
+			throw new Exception("No existe la categoría indicada");
+		}
+		sent.setCategoria(categoria);
+		// Buscamos el usuario por su username y se lo asignamos a la receta
 		Usuario usuario = usuarioRepo.findUsuarioByNombreUsuario(sent.getUsuario().getNombreUsuario());
 		if (usuario == null)
 		{
@@ -132,7 +140,8 @@ public class RecetaService
 		{
 			throw new Exception("La receta no existe");
 		}
-		service.updateRecetaOriginal(receta, sent);
+		Receta recetaSent = converter.fromRecetaDtoToReceta(sent);
+		service.updateReceta(receta, recetaSent);
 		recetaRepo.save(receta);
 		return converter.fromRecetaToRecetaDto(receta);
 	}

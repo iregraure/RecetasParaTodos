@@ -1,9 +1,14 @@
-<nav *ngIf="logueado">
+<nav>
     <div class="titulo">
         <img src="../../../assets/img/logo.png" alt="Logo de la página">
         <h1>Recetas para todos</h1>
     </div>
-    <div class="usuario">
-        <h3>Bienvenid@ username</h3>
+    <div class="derecha">
+        <div class="usuario" *ngIf="user != null">
+            <h3>Bienvenid@ {{user.username}}</h3>
+        </div>
+        <div class="buttons">
+            <button routerLink="/usuarios">Mis datos</button>
+        </div>
     </div>
 </nav>

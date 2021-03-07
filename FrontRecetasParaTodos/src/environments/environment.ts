@@ -7,7 +7,11 @@ export const environment = {
   loginUrl: "http://localhost:8080/user/login",
   signUpUrl: "http://localhost:8080/user/sign-up",
   nacionalidadUrl: "http://localhost:8080/nacionalidad",
-  apiUrl: "http://localhost:8080"
+  apiUrl: "http://localhost:8080",
+  categoriasUrl: "http://localhost:8080/categoria",
+  recetasCategoriaUrl: "http://localhost:8080/receta/categoria/",
+  recetaUrl: "http://localhost:8080/receta/",
+  usuarioUrl: "http://localhost:8080/usuario/"
 };
 
 /*

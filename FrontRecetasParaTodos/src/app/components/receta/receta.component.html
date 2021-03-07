@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="content">
+        <h1>{{ receta.nombre | uppercase }}</h1>
+        <div class="izquierda">
+            <div class="ingredientes">
+                <h3>Ingredientes</h3>
+                <ul>
+                    <li *ngFor="let ingrediente of ingredientes">
+                        {{ingrediente}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="separacion"></div>
+        <div class="derecha">
+            <div class="info">
+                <p>Tiempo de preparación: {{receta.tiempoPreparacion}}</p>
+                <p>Raciones: {{receta.raciones}}</p>
+                <p>Subida por: {{receta.nombreUsuario}}</p>
+            </div>
+            <div class="preparacion">
+                <h3>Preparación</h3>
+                <hr>
+                <p>{{receta.preparacion}}</p>
+            </div>
+            <div class="buttons">
+                <button class="aceptar" (click)="modificar()" *ngIf="usuario.username == receta.nombreUsuario">Modificar</button>
+                <button class="cancelar" (click)="cancelar()">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>
