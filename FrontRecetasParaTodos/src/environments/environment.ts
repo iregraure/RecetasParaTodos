@@ -11,7 +11,9 @@ export const environment = {
   categoriasUrl: "http://localhost:8080/categoria",
   recetasCategoriaUrl: "http://localhost:8080/receta/categoria/",
   recetaUrl: "http://localhost:8080/receta/",
-  usuarioUrl: "http://localhost:8080/usuario/"
+  usuarioUrl: "http://localhost:8080/usuario/",
+  usuarioAutenticadoUrl: "http://localhost:8080/user/autenticado/",
+  recetaRandomUrl: "http://localhost:8080/receta/random"
 };
 
 /*

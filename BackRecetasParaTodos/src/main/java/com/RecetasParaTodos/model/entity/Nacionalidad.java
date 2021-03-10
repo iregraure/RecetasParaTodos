@@ -16,7 +16,7 @@ public class Nacionalidad
 
 	private String descripcion;
 
-	// Constructor
+	// Constructores
 	public Nacionalidad()
 	{
 		super();

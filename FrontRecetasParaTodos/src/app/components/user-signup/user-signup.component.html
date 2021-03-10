@@ -4,13 +4,12 @@
             <h2>Introduce tus datos</h2>
         </div>
         <div class="card-content">
-            <form [formGroup]="signUpForm">
+            <form class="signupForm" [formGroup]="signUpForm">
                 <div class="campo">
                     <label for="username"><b>Nombre de usuario</b></label>
                     <input type="text" placeholder="Nombre de usuario" name="username" formControlName="username">
                     <ng-container *ngIf="signUpForm.controls.username.errors != undefined">
-                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.username.errors.required">Este campo
-                            no puede estar vacio</div>
+                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.username.errors.required">Campo obligatorio</div>
                         <div class="errorEnValidacion" *ngIf="signUpForm.controls.username.errors.minlength">El nombre
                             de usuario debe contener al menos 4 caracteres</div>
                     </ng-container>
@@ -19,8 +18,7 @@
                     <label for="pass"><b>Contraseña</b></label>
                     <input type="password" placeholder="Contraseña" name="pass" formControlName="pass">
                     <ng-container *ngIf="signUpForm.controls.pass.errors != undefined">
-                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.pass.errors.required">Este campo no
-                            puede estar vacio</div>
+                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.pass.errors.required">Campo obligatorio</div>
                         <div class="errorEnValidacion" *ngIf="signUpForm.controls.pass.errors.minlength">La contraseña
                             debe contener al menos 6 caracteres</div>
                         <div class="errorEnValidacion" *ngIf="signUpForm.controls.pass.errors.pattern">La contraseña
@@ -31,16 +29,14 @@
                     <label for="name"><b>Nombre completo</b></label>
                     <input type="text" placeholder="Nombre completo" name="name" formControlName="nombre">
                     <ng-container *ngIf="signUpForm.controls.nombre.errors != undefined">
-                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.nombre.errors.required">Este campo
-                            no puede estar vacio</div>
+                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.nombre.errors.required">Campo obligatorio</div>
                     </ng-container>
                 </div>
                 <div class="campo">
                     <label for="birthdate"><b>Fecha de nacimiento</b></label>
                     <input type="text" placeholder="dd/mm/yyyy" name="birthdate" formControlName="fechaNacimiento">
                     <ng-container *ngIf="signUpForm.controls.fechaNacimiento.errors != undefined">
-                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.fechaNacimiento.errors.required">Este campo no
-                            puede estar vacio</div>
+                        <div class="errorEnValidacion" *ngIf="signUpForm.controls.fechaNacimiento.errors.required">Campo obligatorio</div>
                         <div class="errorEnValidacion" *ngIf="signUpForm.controls.fechaNacimiento.errors.pattern">La fecha debe
                             seguir el formato dd/mm/yyyy</div>
                     </ng-container>
@@ -56,15 +52,15 @@
                 <div class="campo">
                     <label for="genero"><b>Genero</b></label>
                     <div class="opciones">
-                        <input type="radio" name="genero" value="femenino" formControlName="genero">Femenino
-                        <input type="radio" name="genero" value="masculino" formControlName="genero">Masculino
-                        <input type="radio" name="genero" value="otro" formControlName="genero">Otro
+                        <div class="opcion"><input type="radio" name="genero" value="femenino" formControlName="genero">Femenino</div>
+                        <div class="opcion"><input type="radio" name="genero" value="masculino" formControlName="genero">Masculino</div>
+                        <div class="opcion"><input type="radio" name="genero" value="otro" formControlName="genero">Otro</div>
                     </div>
                 </div>
             </form>
             <div class="card-buttons">
-                <button class="aceptar" (click)="aceptar()" [disabled]="signUpForm.invalid">Crear usuario</button>
-                <button class="cancelar" (click)="cancelar()">Cancelar</button>
+                <button class="aceptar signupButton" (click)="aceptar()" [disabled]="signUpForm.invalid">Crear usuario</button>
+                <button class="cancelar signupButton" (click)="cancelar()">Cancelar</button>
             </div>
         </div>
     </div>

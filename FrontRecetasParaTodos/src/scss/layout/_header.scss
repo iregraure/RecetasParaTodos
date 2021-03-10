@@ -1,0 +1,23 @@
+.tituloHeader
+{
+    display: none;
+    
+    @media screen and (min-width: 600px)
+    {
+        display: block;
+        margin-left: 2vw;
+        font-size: 5vh;
+        color: #408359;
+    }
+}
+
+.imgLogo
+{
+    height: 10vh;
+}
+
+h3
+{
+    font-size: 2.5vh;
+    color: #408359;
+}

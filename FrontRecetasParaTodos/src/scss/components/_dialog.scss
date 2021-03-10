@@ -1,0 +1,120 @@
+.loginContent
+{
+    width: 80vw;
+    background-color: white;
+    border: solid 1px $colorCardBorder;
+    border-radius: 20px;
+    padding: 0 3vw;
+    @include card-shadow;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 60vw;
+    }
+    
+    @media screen and (min-width: 1200px)
+    {
+        width: 40vw;
+    }
+
+    h1
+    {
+        font-size: 6vh;
+    }
+}
+
+.receta
+{
+    width: 85vw;
+    background-color: white;
+    border: solid 1px $colorCardBorder;
+    border-radius: 20px;
+    @include card-shadow;
+    @include centrar-contenido;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 70vw;
+    }
+
+    @media screen and (min-width: 1200px)
+    {
+        width: 50vw;
+    }
+    
+    .nombreReceta
+    {
+        height: 10vh;
+        margin: 2vh 2vw;
+        
+        h1
+        {
+            font-size: 4vh;
+            color: $colorBotonHover;
+        }
+    }
+
+    .datosReceta
+    {
+        display: flex;
+        flex-direction: row;
+        margin: 2vh 2vw;
+
+        
+        .izquierda
+        {
+            width: 30vw;
+            padding-left: 3vw;
+            font-size: 2vh;
+
+            @media screen and (min-width: 600px)
+            {
+                width: 20vw;
+            }
+
+            @media screen and (min-width: 1200px)
+            {
+                width: 15vw;
+            }
+            
+            h3
+            {
+                font-size: 2.5vh;
+            }
+        }
+
+        .derecha
+        {
+            width: 45vw;
+            padding-left: 2vw;
+            padding-right: 3vw;
+            font-size: 2.5vh;
+            border-left: 4px solid $colorBotonHover;
+
+            @media screen and (min-width: 600px)
+            {
+                width: 35vw;
+            }
+            
+            @media screen and (min-width: 1200px)
+            {
+                width: 25vw;
+            }
+
+            .preparacion
+            {
+                margin-top: 5vh;
+
+                h3
+                {
+                    font-size: 3vh;
+                }
+
+                hr
+                {
+                    color: $colorBotonHover;
+                }
+            }
+        }
+    }
+}

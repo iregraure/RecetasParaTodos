@@ -4,8 +4,15 @@
 // vendors
 // base
 // layout
+@import 'layout/header';
 // components
 @import 'components/button';
+@import 'components/card';
+@import 'components/containers';
+@import 'components/dialog';
+@import 'components/form';
 @import 'components/nav';
 // pages
+@import 'pages/bienvenida';
+@import 'pages/recetas';
 // themes

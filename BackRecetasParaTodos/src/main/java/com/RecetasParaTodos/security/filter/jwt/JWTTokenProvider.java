@@ -18,8 +18,10 @@ public class JWTTokenProvider
 
 	public static String generateToken(User user)
 	{
-		return Jwts.builder().setHeaderParam(Header.TYPE, Header.JWT_TYPE).setSubject(user.getId().toString())
-				.setId(user.getId().toString()).setIssuedAt(new Date(System.currentTimeMillis()))
+		return Jwts.builder().setHeaderParam(Header.TYPE, Header.JWT_TYPE)
+				.setSubject(user.getId().toString())
+				.setId(user.getId().toString())
+				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 				.signWith(getKey(), SignatureAlgorithm.HS512).compact();
 	}
@@ -46,5 +48,12 @@ public class JWTTokenProvider
 			System.out.println(e.getMessage());
 		}
 		return valid;
+	}
+	
+	public static int getIdUsuarioDesdeJwt(String jwt)
+	{
+		String stringIdUsuario = Jwts.parser().setSigningKey(getKey()).parseClaimsJws(jwt).getBody().getSubject();
+		int idUsuario = Integer.parseInt(stringIdUsuario);
+		return idUsuario;
 	}
 }

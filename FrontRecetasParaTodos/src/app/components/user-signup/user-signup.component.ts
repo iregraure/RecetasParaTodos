@@ -68,7 +68,6 @@ export class UserSignupComponent implements OnInit {
     
     this.loginService.registraUsuario(this.usuario).subscribe((resul: any) =>
       {
-        this.avisos.usuarioCreado();
         this.router.navigate(['/login']);
       });
   }

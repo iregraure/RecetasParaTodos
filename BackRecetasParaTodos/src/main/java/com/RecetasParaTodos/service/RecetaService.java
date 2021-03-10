@@ -101,6 +101,16 @@ public class RecetaService
 		}
 		return recetasDto;
 	}
+	
+	// Método que nos devuelve una receta aleatoria
+	public RecetaDto getRecetaAleatoria()
+	{
+		List<Receta> recetas = (List<Receta>) recetaRepo.findAll();
+		int numMax = recetas.size();
+		int random = (int)Math.floor(Math.random()*numMax);
+		Receta receta = recetas.get(random);
+		return converter.fromRecetaToRecetaDto(receta);
+	}
 
 	// Método para crear una receta. Comprueba si ya existe una receta con el mismo
 	// nombre y lanza una excepción en caso afirmativo

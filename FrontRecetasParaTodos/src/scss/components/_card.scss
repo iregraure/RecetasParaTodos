@@ -1,0 +1,152 @@
+.card
+{
+    @include card;
+    width: 90vw;
+    margin-top: 5vh;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 70vw;
+    }
+
+    @media screen and (min-width: 1200px)
+    {
+        width: 50vw;
+    }
+
+    .card-header
+    {
+        @include card-header;
+        
+        h2
+        {
+            font-size: 3vh;
+        }
+    }
+
+    .card-content
+    {
+        @include card-content;
+        font-size: 2.2vh;
+        padding: 2vh 3vw;
+
+        .card-buttons
+        {
+            @include card-buttons;
+            width: 70vw;
+
+            @media screen and (min-width: 600px)
+            {
+                width: 50vw;
+            }
+
+            @media screen and (min-width: 1200px)
+            {
+                width: 40vw;
+            }
+        }
+    }
+}
+
+.randomCard
+{
+    @include card;
+    width: 80vw;
+    margin-top: 5vh;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 50vw;
+    }
+
+    @media screen and (min-width: 1200px)
+    {
+        width: 30vw;
+    }
+
+    .randomCard-header
+    {
+        @include card-header;
+        
+        h2
+        {
+            font-size: 3vh;
+        }
+    }
+
+    .randomCard-content
+    {
+        @include card-content;
+        font-size: 2.2vh;
+        padding: 2vh 3vw;
+
+        .randomCard-buttons
+        {
+            @include card-buttons;
+            width: 70vw;
+
+            @media screen and (min-width: 600px)
+            {
+                width: 40vw;
+            }
+
+            @media screen and (min-width: 1200px)
+            {
+                width: 20vw;
+            }
+        }
+    }
+}
+
+.gridCard
+{
+    @include card;
+    border-radius: 15px;
+    width: 80vw;
+    margin: 2vh 2vw;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 40vw;
+    }
+
+    @media screen and (min-width: 1200px)
+    {
+        width: 20vw;
+        margin: 2vh 1.5vw;
+    }
+
+    .gridCard-header
+    {
+        @include card-header;
+        border-radius: 15px 15px 0 0;
+        font-size: 4vh;
+        font-weight: 600;
+    }
+
+    .gridCard-content
+    {
+        @include card-content;
+        border-radius: 0 0 15px 15px;
+        font-size: 3vh;
+        padding: 0 4vw;
+
+        .gridCard-buttons
+        {
+            @include flex-end;
+            margin-bottom: 3vh;
+
+            button
+            {
+                @include basic-button;
+                background-color: $colorBotonDeshabilitado;
+                font-size: 2vh;
+
+                &:hover
+                {
+                    background-color: $colorBoton;
+                }
+            }
+        }
+    }
+}

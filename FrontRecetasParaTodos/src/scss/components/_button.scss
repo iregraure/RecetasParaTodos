@@ -1,17 +1,108 @@
+@import 'src/scss/abstracts/mixins';
+@import 'src/scss/abstracts/variables';
+
+button
+{
+    @include basic-button;
+}
+
 .pressed
 {
-    outline: none;
+    background-color: $colorBoton;
+    outline: $colorBoton;
     border: none;
-    box-shadow: 0 4px $colorBotonHover;
+    font-size: 3vh;
+    box-shadow: 0 6px $colorBotonHover;
+    margin: 2vh 0;
+    width: 60vw;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 30vw;
+        margin: 2vh 3vw;
+    }
+
+    @media screen and (min-width: 1200px)
+    {
+        width: 15vw;
+        margin: 2vh 2vw;
+        font-size: 2.5vh;
+    }
 }
 
 .pressed:hover
 {
-    box-shadow: 0 4px $colorSombraBoton;
+    box-shadow: 0 6px $colorSombraBoton;
+    background-color: $colorBotonHover;
 }
 
 .pressed:active
 {
-    box-shadow: 0 2px $colorSombraBoton;
-    transform: translateY(2px);
+    box-shadow: 0 3px $colorSombraBoton;
+    transform: translateY(3px);
+}
+
+.headerButton
+{
+    @include basic-button;
+    font-size: 1.8vh;
+    background-color: $colorBoton;
+    height: 5vh;
+    margin: 0 2vw;
+}
+
+.loginButton
+{
+    font-size: 2vh;
+    margin: 1vh 1.5vw;
+
+    button
+    {
+        @media screen and (min-width: 600px)
+        {
+            font-size: 2.5vh;
+            margin: 1vh 1.5vw;
+        }
+    }
+}
+
+.aceptar
+{
+    background-color: $colorBoton;
+    
+    &:hover
+    {
+        background-color: $colorBotonHover;
+    }
+
+    &:disabled
+    {
+        background-color: $colorBotonDeshabilitado;
+    }
+}
+
+.cancelar
+{
+    background-color: $colorBotonCancelar;
+
+    &:hover
+    {
+        background-color: $colorBotonCancelarHover;
+        color: $colorTextoBotonHover;
+    }
+}
+
+.signupButton
+{
+    font-size: 2.2vh;
+    margin: 1vh 2vw;
+}
+
+.buttonsReceta
+{
+    button
+    {
+        font-size: 2vh;
+        margin: 0 2vw;
+    }
 }

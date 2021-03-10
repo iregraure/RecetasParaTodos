@@ -19,8 +19,11 @@ export class RecetasComponent implements OnInit {
 
   constructor(private recetasService: RecetasService) { }
 
+  random: Receta = null;
+
   ngOnInit(): void {
     this.obtenerCategorias();
+    this.recetaRandom();
     this.visible = false;
   }
 
@@ -47,11 +50,20 @@ export class RecetasComponent implements OnInit {
       })
   }
 
-  verReceta(id: number){
+  verReceta(id: number)
+  {
     this.recetasService.obtenerReceta(id).subscribe(resul => 
       {
         this.receta = resul;
         this.visible = !this.visible;
+      })
+  }
+
+  recetaRandom()
+  {
+    this.recetasService.obtenerRecetaRandom().subscribe(resul =>
+      {
+        this.receta = resul;
       })
   }
 

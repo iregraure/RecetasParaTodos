@@ -1,0 +1,38 @@
+.gradiente
+{
+    background: $gradiente;
+    background-clip: text;
+    color: transparent;
+    font-size: 4.5vh;
+}
+
+img
+{
+    width: 60vw;
+
+    @media screen and (min-width: 600px) 
+    {
+        width: 50vw;
+    }
+
+    @media screen and (min-width: 1200px) 
+    {
+        width: 24vw;
+    }
+}
+
+.modal
+{
+    z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1
+{
+    @media screen and (min-Width: 1200px)
+    {
+        font-size: 6vh;
+    }
+}

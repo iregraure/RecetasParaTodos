@@ -1,14 +1,12 @@
 <nav>
-    <div class="titulo">
-        <img src="../../../assets/img/logo.png" alt="Logo de la página">
-        <h1>Recetas para todos</h1>
+    <div class="titulo rowCentered">
+        <img class="imgLogo" src="../../../assets/img/logo.png" alt="Logo de la página" routerLink="/recetas">
+        <h1 class="tituloHeader">Recetas para todos</h1>
     </div>
-    <div class="derecha">
-        <div class="usuario" *ngIf="user != null">
+    <div class="rowCentered">
+        <div class="rowCentered" [hidden]="user == null">
             <h3>Bienvenid@ {{user.username}}</h3>
         </div>
-        <div class="buttons">
-            <button routerLink="/usuarios">Mis datos</button>
-        </div>
+        <button class="headerButton" routerLink="/usuarios">Mis datos</button>
     </div>
 </nav>

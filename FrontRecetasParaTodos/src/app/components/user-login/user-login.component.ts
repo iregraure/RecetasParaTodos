@@ -38,8 +38,8 @@ export class UserLoginComponent implements OnInit {
         {
           this.tokenStorage.saveToken(res);
           this.tokenStorage.saveUser(this.user);
-          this.loginService.isUserLogged.next(true);
           this.router.navigate(['/recetas']);
+          this.loginService.emitirUsuarioLogeado();
         }
       });
   }

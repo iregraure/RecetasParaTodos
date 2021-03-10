@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Receta } from '../interfaces/recetaInterface';
 import { environment } from '../../environments/environment';
+import { Categoria } from '../interfaces/categoriaInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +14,22 @@ export class RecetasService {
 
   obtenerRecetasCategoria(categoria: String): Observable<any>
   {
-    return this.http.get(`${environment.recetasCategoriaUrl}${categoria}`);
+    return this.http.get<Receta[]>(`${environment.recetasCategoriaUrl}${categoria}`);
   }
 
   obtenerCategorias(): Observable<any>
   {
-    return this.http.get(environment.categoriasUrl);
+    return this.http.get<Categoria[]>(environment.categoriasUrl);
   }
 
   obtenerReceta(id: number): Observable<any>
   {
-    return this.http.get(`${environment.recetaUrl}${id}`);
+    return this.http.get<Receta>(`${environment.recetaUrl}${id}`);
+  }
+
+  obtenerRecetaRandom(): Observable<any>
+  {
+    return this.http.get<Receta>(environment.recetaRandomUrl);
   }
 
 }

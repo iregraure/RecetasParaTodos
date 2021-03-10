@@ -5,15 +5,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  user: User;
+  user: User = null;
   usuario: Usuario;
   clickado: boolean = false;
+  
+  @Output() usuarioLogeado = new EventEmitter<User>();
 
   public isUserLogged = new Subject<boolean>();
   public isLogged = this.isUserLogged.asObservable();
@@ -57,6 +60,35 @@ export class LoginService {
   actualizarUsuario(usuario: Usuario): Observable<any>
   {
     return this.http.put(`${environment.usuarioUrl}${usuario.username}`, usuario);
+  }
+
+  getUserAutenticado(): Observable<User>
+  {
+    return this.http.get<User>(environment.usuarioAutenticadoUrl)
+  }
+
+  getUsuarioAutenticado(): Observable<User>
+  {
+    let jwt = this.tokenStorage.getToken();
+    return this.http.get<User>(`${environment.usuarioAutenticadoUrl}${jwt}`).pipe(
+      tap(usu =>
+        {
+          if((this.user == null && usu != null) || (this.user != null && usu == null) || 
+          (this.user != null && usu == null && this.user.username != usu.username))
+          {
+            this.emitirUsuarioLogeado();
+            this.user = usu;
+          }
+        })
+    )
+  }
+
+  emitirUsuarioLogeado()
+  {
+    this.getUsuarioAutenticado().subscribe(usu =>
+      {
+        this.usuarioLogeado.emit(usu);
+      });
   }
 
   isLoggedIn(url: string)

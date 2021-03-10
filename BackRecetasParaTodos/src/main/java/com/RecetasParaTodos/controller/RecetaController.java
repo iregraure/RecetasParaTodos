@@ -128,6 +128,23 @@ public class RecetaController
 		}
 		return response;
 	}
+	
+	// Obtener una receta aleatoria
+	@GetMapping("/random")
+	public ResponseEntity<?> getRecetaRandom()
+	{
+		ResponseEntity<?> response;
+		try
+		{
+			RecetaDto receta = service.getRecetaAleatoria();
+			response = ResponseEntity.ok(receta);
+		}
+		catch (Exception e)
+		{
+			response = ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return response;
+	}
 
 	// Crear una receta
 	@PostMapping
