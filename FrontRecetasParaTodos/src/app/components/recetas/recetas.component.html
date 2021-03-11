@@ -7,7 +7,7 @@
         </ul>
     </div>
     
-    <div class="sinSeleccionar main" *ngIf="seleccionada==null">
+    <div class="sinSeleccionar main" *ngIf="seleccionada==null && receta != null">
         <h1>Te recomendamos...</h1>
         <div class="randomCard">
             <div class="randomCard-header">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="recetas">
-        <div class="gridCard" *ngFor="let receta of recetas">
+        <div class="gridCard" *ngFor="let receta of recetas | paginate: { itemsPerPage: 12, currentPage: pag }">
             <div class="gridCard-header">
                 {{receta.nombre}}
             </div>
@@ -37,6 +37,8 @@
             </div>
         </div>
     </div>
+    <pagination-controls (pageChange)="pag = $event" autoHide="true" previousLabel="Anterior" nextLabel="Siguiente"
+    screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estás en la página"></pagination-controls>
 
     <div class="modal" *ngIf="visible">
         <app-receta (mostrarReceta)="mostrar()" [receta]="receta"></app-receta>

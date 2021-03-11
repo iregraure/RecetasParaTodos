@@ -10,20 +10,24 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class BarraHerramientasComponent implements OnInit {
 
-  user: User;
+  user: User =
+  {
+    username: "",
+    pass: ""
+  };
 
   isUserLogged: boolean;
 
   constructor(private tokenStorage: TokenStorageService,
-              private loginService: LoginService) 
+              private loginService: LoginService)
   { }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
-    this.loginService.usuarioLogeado.subscribe(usu =>
-    {
-      this.user = usu;
-    })
+    // this.loginService.usuarioLogeado.subscribe(usu =>
+    // {
+    //   this.user = usu;
+    // })
   }
 
 }

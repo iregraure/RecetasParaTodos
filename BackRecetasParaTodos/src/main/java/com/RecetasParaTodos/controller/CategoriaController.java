@@ -3,6 +3,7 @@ package com.RecetasParaTodos.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.RecetasParaTodos.model.entity.Categoria;
 import com.RecetasParaTodos.repo.CategoriaRepository;
+import com.RecetasParaTodos.service.CategoriaService;
 
 @CrossOrigin
 @RestController
@@ -21,6 +23,9 @@ public class CategoriaController {
 
 	@Autowired
 	private CategoriaRepository repo;
+	
+	@Autowired
+	private CategoriaService service;
 	
 	// Obtener todas las categorias
 	@GetMapping
@@ -46,7 +51,14 @@ public class CategoriaController {
 		ResponseEntity<?> response;
 		try
 		{
-			response = ResponseEntity.ok(repo.save(categoria));
+			if(service.categoriaExiste(categoria.getDescripcion()))
+			{
+				response = ResponseEntity.ok(repo.save(categoria));				
+			}
+			else
+			{
+				response = ResponseEntity.status(HttpStatus.CONFLICT).body("La categoría ya existe");
+			}
 		}
 		catch(Exception e)
 		{

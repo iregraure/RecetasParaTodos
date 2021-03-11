@@ -1,0 +1,11 @@
+@import '../abstracts/variables';
+
+.main ::ng-deep .ngx-pagination
+{
+    font-size: 2.5vh;
+}
+
+.main ::ng-deep .current
+{
+    background-color: $colorPagination;
+}

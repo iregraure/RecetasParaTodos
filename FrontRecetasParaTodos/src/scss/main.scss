@@ -1,8 +1,6 @@
 // abstracts
 @import 'abstracts/mixins';
 @import 'abstracts/variables';
-// vendors
-// base
 // layout
 @import 'layout/header';
 // components
@@ -12,7 +10,7 @@
 @import 'components/dialog';
 @import 'components/form';
 @import 'components/nav';
+@import 'components/pagination';
 // pages
 @import 'pages/bienvenida';
 @import 'pages/recetas';
-// themes

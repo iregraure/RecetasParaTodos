@@ -12,7 +12,11 @@ import { tap } from 'rxjs/operators';
 })
 export class LoginService {
 
-  user: User = null;
+  user: User = 
+  {
+    username: "",
+    pass: ""
+  };
   usuario: Usuario;
   clickado: boolean = false;
   
@@ -62,34 +66,34 @@ export class LoginService {
     return this.http.put(`${environment.usuarioUrl}${usuario.username}`, usuario);
   }
 
-  getUserAutenticado(): Observable<User>
-  {
-    return this.http.get<User>(environment.usuarioAutenticadoUrl)
-  }
+  // getUserAutenticado(): Observable<User>
+  // {
+  //   return this.http.get<User>(environment.usuarioAutenticadoUrl)
+  // }
 
-  getUsuarioAutenticado(): Observable<User>
-  {
-    let jwt = this.tokenStorage.getToken();
-    return this.http.get<User>(`${environment.usuarioAutenticadoUrl}${jwt}`).pipe(
-      tap(usu =>
-        {
-          if((this.user == null && usu != null) || (this.user != null && usu == null) || 
-          (this.user != null && usu == null && this.user.username != usu.username))
-          {
-            this.emitirUsuarioLogeado();
-            this.user = usu;
-          }
-        })
-    )
-  }
+  // getUsuarioAutenticado(): Observable<User>
+  // {
+  //   let jwt = this.tokenStorage.getToken();
+  //   return this.http.get<User>(`${environment.usuarioAutenticadoUrl}${jwt}`).pipe(
+  //     tap(usu =>
+  //       {
+  //         if((this.user == null && usu != null) || (this.user != null && usu == null) || 
+  //         (this.user != null && usu == null && this.user.username != usu.username))
+  //         {
+  //           this.emitirUsuarioLogeado();
+  //           this.user = usu;
+  //         }
+  //       })
+  //   )
+  // }
 
-  emitirUsuarioLogeado()
-  {
-    this.getUsuarioAutenticado().subscribe(usu =>
-      {
-        this.usuarioLogeado.emit(usu);
-      });
-  }
+  // emitirUsuarioLogeado()
+  // {
+  //   this.getUsuarioAutenticado().subscribe(usu =>
+  //     {
+  //       this.usuarioLogeado.emit(usu);
+  //     });
+  // }
 
   isLoggedIn(url: string)
   {

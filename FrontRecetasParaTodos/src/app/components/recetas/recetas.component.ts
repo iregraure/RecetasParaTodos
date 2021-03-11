@@ -20,11 +20,13 @@ export class RecetasComponent implements OnInit {
   constructor(private recetasService: RecetasService) { }
 
   random: Receta = null;
+  pag: number;
 
   ngOnInit(): void {
     this.obtenerCategorias();
     this.recetaRandom();
     this.visible = false;
+    this.pag = 1;
   }
 
   obtenerCategorias()
