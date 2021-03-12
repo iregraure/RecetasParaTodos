@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
+import { EditarRecetaComponent } from './components/editar-receta/editar-receta.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { UserSignupComponent } from './components/user-signup/user-signup.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'signUp', component: UserSignupComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'recetas', component: RecetasComponent, canActivate: [IsLogedGuard] },
+  { path: 'modificaReceta', component: EditarRecetaComponent },
   { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then(m => m.UsuariosModule) }
 ];
 

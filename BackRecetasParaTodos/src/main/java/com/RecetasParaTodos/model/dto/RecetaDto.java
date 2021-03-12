@@ -1,8 +1,7 @@
 package com.RecetasParaTodos.model.dto;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.RecetasParaTodos.model.entity.Categoria;
 
 public class RecetaDto {
 
@@ -15,7 +14,9 @@ public class RecetaDto {
 
 	private String preparacion;
 
-	private String tiempoPreparacion;
+	private int horas;
+	
+	private int minutos;
 
 	private int raciones;
 
@@ -25,14 +26,15 @@ public class RecetaDto {
 
 	private String nombreUsuario;
 	
-	public RecetaDto(int id, String nombre, List<String> ingredientes, String preparacion, String tiempoPreparacion,
+	public RecetaDto(int id, String nombre, List<String> ingredientes, String preparacion, int horas, int minutos,
 			int raciones, boolean microondas, String categoria, String nombreUsuario) 
 	{
 		this.id = id;
 		this.nombre = nombre;
 		this.ingredientes = ingredientes;
 		this.preparacion = preparacion;
-		this.tiempoPreparacion = tiempoPreparacion;
+		this.horas = horas;
+		this.minutos = minutos;
 		this.raciones = raciones;
 		this.microondas = microondas;
 		this.categoria = categoria;
@@ -67,12 +69,20 @@ public class RecetaDto {
 		this.preparacion = preparacion;
 	}
 
-	public String getTiempoPreparacion() {
-		return tiempoPreparacion;
+	public int getHoras() {
+		return horas;
 	}
 
-	public void setTiempoPreparacion(String tiempoPreparacion) {
-		this.tiempoPreparacion = tiempoPreparacion;
+	public void setHoras(int horas) {
+		this.horas = horas;
+	}
+
+	public int getMinutos() {
+		return minutos;
+	}
+
+	public void setMinutos(int minutos) {
+		this.minutos = minutos;
 	}
 
 	public int getRaciones() {

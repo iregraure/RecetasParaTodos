@@ -1,0 +1,72 @@
+<div class="main">
+    <div class="recetaCard" *ngIf="receta != null">
+        <div class="recetaCard-header">
+            <h1>{{receta.nombre}}</h1>
+        </div>
+        <div class="recetaCard-content">
+            <form class="recetaForm" #recetaForm="ngForm" (ngSubmit)="aceptar()">
+                <!-- Campo para el nombre de la receta -->
+                <div class="campo">
+                    <label for="nombre"><b>Nombre de la receta</b></label>
+                    <input type="text" required name="nombre" placeholder="Nombre de la receta" [(ngModel)]="receta.nombre" #nombre="ngModel">
+                    <div [hidden]="nombre.valid || nombre.untouched" class="errorEnValidacion">
+                        Campo obligatorio
+                    </div>
+                </div>
+                <!-- Campo para el tiempo de preparación -->
+                <div class="campo">
+                    <label for="tiempo"><b>Tiempo de preparación</b></label>
+                    <div class="tiempo">
+                        <input type="text" required name="horas" placeholder="Horas" [(ngModel)]="receta.horas" #horas="ngModel">
+                        <label>horas</label>
+                        <input type="text" required name="minutos" placeholder="minutos" [(ngModel)]="receta.minutos" #minutos="ngModel">
+                        <label>minutos</label>
+                    </div>
+                    <div [hidden]="horas.valid || horas.untouched || minutos.valid || minutos.untouched" class="errorEnValidacion">
+                        Campo obligatorio
+                    </div>
+                </div>
+                <!-- Campo para el número de raciones -->
+                <div class="campo">
+                    <label for="raciones"><b>Número de raciones</b></label>
+                    <select class="raciones" name="raciones" [(ngModel)]="receta.raciones">
+                        <option value="" selected>Seleccionar</option>
+                        <option *ngFor="let num of raciones" [value]="num">
+                            {{ num }}
+                        </option>
+                    </select>
+                </div>
+                <!-- Campo para los ingredientes -->
+                <!-- Campo para la preparación -->
+                <div class="campo">
+                    <label for="preparacion"><b>Preparación</b></label>
+                    <textarea required name="preparacion" placeholder="Preparación" [(ngModel)]="receta.preparacion" #preparacion="ngModel"></textarea>
+                    <div [hidden]="preparacion.valid || preparacion.untouched">
+                        Campo obligatorio
+                    </div>
+                </div>
+                <!-- Campo para la categoría -->
+                <div class="campo">
+                    <label for="categoria"><b>Categoría</b></label>
+                    <select name="categoria" [(ngModel)]="receta.categoria">
+                        <option value="" selected>Seleccionar</option>
+                        <option *ngFor="let cat of categorias" [value]="cat">
+                            {{ cat.descripcion }}
+                        </option>
+                    </select>
+                </div>
+                <!-- Campo para el microondas -->
+                <div class="campo">
+                    <label><b>Hecho en el microondas?</b></label>
+                    <div class="microondas">
+                        <div class="opcion"><input type="radio" name="microondas" value="true" [(ngModel)]="receta.microondas">Si</div>
+                        <div class="opcion"><input type="radio" name="microondas" value="false" [(ngModel)]="receta.microondas">No</div>
+                    </div>
+                </div>
+                <div class="recetaCard-Buttons">
+                    <button type="submit" class="aceptar loginButton" [disabled]="!recetaForm.form.valid">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

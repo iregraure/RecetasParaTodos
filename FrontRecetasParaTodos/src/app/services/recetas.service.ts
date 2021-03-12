@@ -17,7 +17,7 @@ export class RecetasService {
     return this.http.get<Receta[]>(`${environment.recetasCategoriaUrl}${categoria}`);
   }
 
-  obtenerCategorias(): Observable<any>
+  obtenerCategorias(): Observable<Categoria[]>
   {
     return this.http.get<Categoria[]>(environment.categoriasUrl);
   }

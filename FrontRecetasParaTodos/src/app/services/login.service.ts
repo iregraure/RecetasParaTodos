@@ -12,14 +12,14 @@ import { tap } from 'rxjs/operators';
 })
 export class LoginService {
 
-  user: User = 
+  user: User =
   {
     username: "",
     pass: ""
   };
   usuario: Usuario;
   clickado: boolean = false;
-  
+
   @Output() usuarioLogeado = new EventEmitter<User>();
 
   public isUserLogged = new Subject<boolean>();
@@ -31,7 +31,7 @@ export class LoginService {
 
   invitadoLogin(): Observable<any>
   {
-    this.user = 
+    this.user =
     {
       username: 'invitado',
       pass: 'Invitado'
@@ -77,7 +77,7 @@ export class LoginService {
   //   return this.http.get<User>(`${environment.usuarioAutenticadoUrl}${jwt}`).pipe(
   //     tap(usu =>
   //       {
-  //         if((this.user == null && usu != null) || (this.user != null && usu == null) || 
+  //         if((this.user == null && usu != null) || (this.user != null && usu == null) ||
   //         (this.user != null && usu == null && this.user.username != usu.username))
   //         {
   //           this.emitirUsuarioLogeado();

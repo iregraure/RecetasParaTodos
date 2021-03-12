@@ -1,5 +1,8 @@
 package com.RecetasParaTodos.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,29 @@ public class IngredienteService {
 			existe = true;
 		}
 		return existe;
+	}
+	
+	// Método que convierte una lista de String en una lista de ingrediente
+	public List<Ingrediente> getListaIngredientes(List<String> ingredientes)
+	{
+		List<Ingrediente> lista = new ArrayList<Ingrediente>();
+		for (String ingrediente : ingredientes) 
+		{
+			Ingrediente ingr = repo.findIngredienteByDescripcion(ingrediente);
+			lista.add(ingr);
+		}
+		return lista;
+	}
+	
+	//	Método que convierte una lista de ingredientes en una lista de String
+	public List<String> getListaString(List<Ingrediente> ingredientes)
+	{
+		List<String> lista = new ArrayList<String>();
+		for (Ingrediente ingrediente: ingredientes)
+		{
+			lista.add(ingrediente.getDescripcion());
+		}
+		return lista;
 	}
 	
 }

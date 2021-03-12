@@ -13,6 +13,7 @@ import { UserSignupComponent } from './components/user-signup/user-signup.compon
 import { BarraHerramientasComponent } from './components/barra-herramientas/barra-herramientas.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { RecetaComponent } from './components/receta/receta.component';
+import { EditarRecetaComponent } from './components/editar-receta/editar-receta.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RecetaComponent } from './components/receta/receta.component';
     UserSignupComponent,
     BarraHerramientasComponent,
     RecetasComponent,
-    RecetaComponent
+    RecetaComponent,
+    EditarRecetaComponent
   ],
   imports: [
     BrowserModule,

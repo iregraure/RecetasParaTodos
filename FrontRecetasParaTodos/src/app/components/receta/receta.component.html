@@ -16,7 +16,7 @@
             </div>
             <div class="derecha">
                 <div class="info">
-                    <p>Tiempo de preparación: {{receta.tiempoPreparacion}}</p>
+                    <p>Tiempo de preparación: {{receta.horas}} horas {{receta.minutos}} minutos</p>
                     <p>Raciones: {{receta.raciones}}</p>
                     <p>Subida por: {{receta.nombreUsuario}}</p>
                 </div>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="buttonsReceta">
-            <button class="aceptar" (click)="modificar()" *ngIf="usuario.username == receta.nombreUsuario">Modificar</button>
+            <button class="aceptar" (click)="modificar(receta.id)" *ngIf="usuario.username == receta.nombreUsuario">Modificar</button>
             <button class="cancelar" (click)="cancelar()">Volver</button>
         </div>
     </div>

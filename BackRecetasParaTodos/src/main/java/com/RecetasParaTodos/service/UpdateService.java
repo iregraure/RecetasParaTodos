@@ -56,10 +56,6 @@ public class UpdateService
 		{
 			original.setMicroondas(sent.isMicroondas());
 		}
-		// Para comparar la lista de ingredientes primero lo ordenamos y despues las
-		// comparamos
-		Collections.sort(original.getIngredientes());
-		Collections.sort(sent.getIngredientes());
 		if (!original.getIngredientes().equals(sent.getIngredientes()))
 		{
 			original.setIngredientes(sent.getIngredientes());

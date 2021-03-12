@@ -2,17 +2,14 @@ package com.RecetasParaTodos.model.entity;
 
 import java.util.List;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Receta
@@ -24,9 +21,8 @@ public class Receta
 
 	private String nombre;
 
-	@ElementCollection
-	@CollectionTable(name = "Ingredientes_receta", joinColumns = @JoinColumn(referencedColumnName = "id"))
-	private List<String> ingredientes;
+	@OneToMany
+	private List<Ingrediente> ingredientes;
 
 	private String preparacion;
 
@@ -50,7 +46,7 @@ public class Receta
 		super();
 	}
 
-	public Receta(String nombre, List<String> ingredientes, String preparacion, String tiempoPreparacion, int raciones,
+	public Receta(String nombre, List<Ingrediente> ingredientes, String preparacion, String tiempoPreparacion, int raciones,
 			boolean microondas, Categoria categoria, Usuario usaurio)
 	{
 		this.nombre = nombre;
@@ -74,12 +70,12 @@ public class Receta
 		this.nombre = nombre;
 	}
 
-	public List<String> getIngredientes()
+	public List<Ingrediente> getIngredientes()
 	{
 		return ingredientes;
 	}
 
-	public void setIngredientes(List<String> ingredientes)
+	public void setIngredientes(List<Ingrediente> ingredientes)
 	{
 		this.ingredientes = ingredientes;
 	}

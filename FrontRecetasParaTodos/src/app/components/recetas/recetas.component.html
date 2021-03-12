@@ -14,7 +14,7 @@
                 <h2>{{receta.nombre}}</h2>
             </div>
             <div class="randomCard-content">
-                <p>Tiempo de preparacion: {{receta.tiempoPreparacion}}</p>
+                <p>Tiempo de preparacion: {{receta.horas}} horas {{receta.minutos}} minutos</p>
                 <p>Usuario: {{receta.nombreUsuario}}</p>
                 <div class="randomCard-buttons">
                     <button class="aceptar" (click)="verReceta(receta.id)">Ver todo</button>
@@ -29,7 +29,7 @@
                 {{receta.nombre}}
             </div>
             <div class="gridCard-content">
-                <p>Tiempo de preparacion: {{receta.tiempoPreparacion}}</p>
+                <p>Tiempo de preparacion: {{receta.horas}} horas {{receta.minutos}} minutos</p>
                 <p>Usuario: {{receta.nombreUsuario}}</p>
                 <div class="gridCard-buttons">
                     <button (click)="verReceta(receta.id)">Ver todo</button>

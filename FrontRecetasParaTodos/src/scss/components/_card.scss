@@ -150,3 +150,53 @@
         }
     }
 }
+
+.recetaCard
+{
+    @include card;
+    width: 90vw;
+    margin-top: 5vh;
+
+    @media screen and (min-width: 600px)
+    {
+        width: 70vw;
+    }
+
+    @media screen and (min-width: 1200px)
+    {
+        width: 50vw;
+    }
+
+    .recetaCard-header
+    {
+        @include card-header;
+        
+        h2
+        {
+            font-size: 3vh;
+        }
+    }
+
+    .recetaCard-content
+    {
+        @include card-content;
+        font-size: 2.2vh;
+        padding: 2vh 3vw;
+
+        .recetaCard-buttons
+        {
+            @include card-buttons;
+            width: 70vw;
+
+            @media screen and (min-width: 600px)
+            {
+                width: 50vw;
+            }
+
+            @media screen and (min-width: 1200px)
+            {
+                width: 40vw;
+            }
+        }
+    }
+}

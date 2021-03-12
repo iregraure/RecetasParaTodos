@@ -4,9 +4,10 @@ export interface Receta
     nombre: string;
     ingredientes: string[];
     preparacion: string;
-    tiempoPreparacion: string;
+    horas: number;
+    minutos: number;
     raciones: number;
-    microondas: boolean;
-    categoria: string;
+    microondas?: boolean;
+    categoria?: string;
     nombreUsuario: string;
 }

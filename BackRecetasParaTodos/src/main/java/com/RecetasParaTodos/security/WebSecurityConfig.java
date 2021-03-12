@@ -56,8 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 				.antMatchers(HttpMethod.GET, "/receta/*").permitAll()
 				.antMatchers(HttpMethod.POST, "/receta").permitAll()
 				.antMatchers(HttpMethod.PUT, "/receta/*").permitAll()
-				.antMatchers(HttpMethod.DELETE, "/receta/*")
-				.permitAll().and().addFilter(new JWTAuthenticationFilter(authenticationManagerBean()))
+				.antMatchers(HttpMethod.DELETE, "/receta/*").permitAll()
+				.and().addFilter(new JWTAuthenticationFilter(authenticationManagerBean()))
 				.addFilterBefore(jwtAuthorizationFilter, BasicAuthenticationFilter.class).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}

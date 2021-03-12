@@ -34,4 +34,15 @@ export class TokenStorageService {
     return JSON.parse(sessionStorage.getItem('user'));
   }
 
+  public saveIdReceta(id: number): void
+  {
+    window.sessionStorage.removeItem('id');
+    window.sessionStorage.setItem('idReceta', id.toString());
+  }
+
+  public getIdReceta(): any
+  {
+    return Number.parseInt(sessionStorage.getItem('idReceta'));
+  }
+
 }

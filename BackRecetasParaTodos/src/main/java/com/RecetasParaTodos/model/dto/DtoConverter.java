@@ -1,13 +1,17 @@
 package com.RecetasParaTodos.model.dto;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.RecetasParaTodos.model.entity.Categoria;
+import com.RecetasParaTodos.model.entity.Ingrediente;
 import com.RecetasParaTodos.model.entity.Receta;
 import com.RecetasParaTodos.model.entity.Usuario;
 import com.RecetasParaTodos.repo.CategoriaRepository;
 import com.RecetasParaTodos.repo.UsuarioRepository;
+import com.RecetasParaTodos.service.IngredienteService;
 
 @Component
 public class DtoConverter {
@@ -19,12 +23,17 @@ public class DtoConverter {
 	@Autowired
 	private CategoriaRepository categoriaRepo;
 	
+	@Autowired
+	private IngredienteService servicio;
+	
 	// Obtener receta a partir del DTO
 	public Receta fromRecetaDtoToReceta (RecetaDto dto)
 	{
 		Usuario usuario = usuarioRepo.findUsuarioByNombreUsuario(dto.getNombreUsuario());
 		Categoria categoria = categoriaRepo.findCategoriaByDescripcion(dto.getCategoria());
-		Receta receta = new Receta (dto.getNombre(), dto.getIngredientes(), dto.getPreparacion(), dto.getTiempoPreparacion(),
+		String tiempoPreparacion = dto.getHoras() + " hora " + dto.getMinutos() + " minutos";
+		List<Ingrediente> ingredientes = servicio.getListaIngredientes(dto.getIngredientes());
+		Receta receta = new Receta (dto.getNombre(), ingredientes, dto.getPreparacion(), tiempoPreparacion,
 				dto.getRaciones(), dto.isMicroondas(), categoria, usuario);
 		return receta;
 	}
@@ -32,8 +41,10 @@ public class DtoConverter {
 	// Obtener DTO a partir de receta
 	public RecetaDto fromRecetaToRecetaDto(Receta receta)
 	{
-		RecetaDto dto = new RecetaDto(receta.getId(), receta.getNombre(), receta.getIngredientes(), receta.getPreparacion(), 
-				receta.getTiempoPreparacion(), receta.getRaciones(), receta.isMicroondas(), receta.getCategoria().getDescripcion(), 
+		String[] tiempo = receta.getTiempoPreparacion().replace(" hora ", " ").replace(" minutos", " ").split(" ");
+		List<String> ingredientes = servicio.getListaString(receta.getIngredientes());
+		RecetaDto dto = new RecetaDto(receta.getId(), receta.getNombre(), ingredientes, receta.getPreparacion(), 
+				Integer.parseInt(tiempo[0]), Integer.parseInt(tiempo[1]), receta.getRaciones(), receta.isMicroondas(), receta.getCategoria().getDescripcion(), 
 				receta.getUsuario().getNombreUsuario());
 		return dto;
 	}

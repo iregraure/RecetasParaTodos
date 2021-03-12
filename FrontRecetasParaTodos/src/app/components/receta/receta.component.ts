@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, SimpleChange, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Receta } from 'src/app/interfaces/recetaInterface';
 import { User } from 'src/app/interfaces/userInterface';
 import { RecetasService } from 'src/app/services/recetas.service';
@@ -17,9 +18,12 @@ export class RecetaComponent implements OnInit {
 
   ingredientes: string[];
 
+  tiempoPreparacion: string;
+
   @Output() mostrarReceta: EventEmitter<null> = new EventEmitter<null>();
   
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(private tokenStorage: TokenStorageService,
+              private route: Router) { }
 
   ngOnInit(): void {
     this.usuario = this.tokenStorage.getUser();
@@ -28,6 +32,12 @@ export class RecetaComponent implements OnInit {
   cancelar()
   {
     this.mostrarReceta.emit(null);
+  }
+
+  modificar(idReceta: number)
+  {
+    this.tokenStorage.saveIdReceta(idReceta);
+    this.route.navigate(['/modificaReceta']);
   }
 
 }
