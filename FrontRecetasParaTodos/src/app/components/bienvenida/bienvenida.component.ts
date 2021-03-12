@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../interfaces/userInterface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bienvenida',
@@ -42,6 +43,13 @@ export class BienvenidaComponent implements OnInit {
         this.router.navigate(['/recetas']);
         this.tokenStorage.saveToken(res);
         this.tokenStorage.saveUser(user);
+        Swal.fire(
+          {
+            title: `Bienvenid@ ${user.username}`,
+            text: 'Logado con éxito',
+            icon: 'success'
+          }
+        )
       }
     });
   }

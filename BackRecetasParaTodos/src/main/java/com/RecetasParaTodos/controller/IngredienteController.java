@@ -36,7 +36,8 @@ public class IngredienteController {
 		try
 		{
 			List<Ingrediente> ingredientes = repo.findAllOrderedByDescripcion();
-			response = ResponseEntity.ok(ingredientes);
+			List<String> lista = servicio.getListaString(ingredientes);
+			response = ResponseEntity.ok(lista);
 		}
 		catch(Exception e)
 		{

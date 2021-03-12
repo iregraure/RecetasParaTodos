@@ -18,6 +18,8 @@ export class EditarRecetaComponent implements OnInit {
   raciones: number[];
 
   categorias: Categoria[];
+
+  ingredientes: string[];
   
   constructor(private tokenStorage: TokenStorageService,
               private recetaService: RecetasService) { }
@@ -28,6 +30,8 @@ export class EditarRecetaComponent implements OnInit {
     this.raciones = [1, 2, 3, 4, 5, 6, 7, 8];
     this.obtenerCategorias();
     this.obtenerReceta();
+    this.obtenerIngredientes();
+    console.log(this.ingredientes)
   }
 
   obtenerCategorias()
@@ -39,6 +43,15 @@ export class EditarRecetaComponent implements OnInit {
         {
           this.categorias.push(cat);
         });
+      })
+  }
+
+  obtenerIngredientes()
+  {
+    this.ingredientes = [];
+    this.recetaService.obtenerIngredientes().subscribe(resul =>
+      {
+        this.ingredientes = resul;
       })
   }
 

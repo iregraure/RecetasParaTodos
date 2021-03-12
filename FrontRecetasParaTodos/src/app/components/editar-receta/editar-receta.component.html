@@ -37,6 +37,12 @@
                     </select>
                 </div>
                 <!-- Campo para los ingredientes -->
+                <div class="campo">
+                    <label for="preparacion"><b>Preparación</b></label>
+                    <textarea required name="preparacion" placeholder="Preparación" [(ngModel)]="receta.preparacion" #preparacion="ngModel">
+                        <chip-autocomplete required="true" removable="true"></chip-autocomplete>
+                    </textarea>
+                </div>
                 <!-- Campo para la preparación -->
                 <div class="campo">
                     <label for="preparacion"><b>Preparación</b></label>

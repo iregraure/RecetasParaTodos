@@ -4,6 +4,7 @@ import { User } from '../../interfaces/userInterface';
 import { AvisosService } from '../../services/avisos.service';
 import { LoginService } from '../../services/login.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-login',
@@ -39,7 +40,37 @@ export class UserLoginComponent implements OnInit {
           this.tokenStorage.saveToken(res);
           this.tokenStorage.saveUser(this.user);
           this.router.navigate(['/recetas']);
-          // this.loginService.emitirUsuarioLogeado();
+          Swal.fire(
+            {
+              title: `Bienvenid@ ${this.user.username}`,
+              text: 'Logado con éxito',
+              icon: 'success'
+            }
+          )
+        }
+      },
+      (error) =>
+      {
+        if(error.status == 401)
+        {
+          Swal.fire(
+            {
+              title: 'Error',
+              text: 'Usuario o contraseña incorrectos',
+              // text: 'Se ha producido un error inesperado',
+              icon: 'warning'
+            }
+          )
+        }
+        else{
+          Swal.fire(
+            {
+              title: 'Error inesperado',
+              text: 'Se ha producido un error inesperado. Pongase en contacto con el administrador',
+              // text: 'Se ha producido un error inesperado',
+              icon: 'error'
+            }
+          )
         }
       });
   }

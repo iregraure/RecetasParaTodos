@@ -13,7 +13,8 @@ export const environment = {
   recetaUrl: "http://localhost:8080/receta/",
   usuarioUrl: "http://localhost:8080/usuario/",
   usuarioAutenticadoUrl: "http://localhost:8080/user/autenticado/",
-  recetaRandomUrl: "http://localhost:8080/receta/random"
+  recetaRandomUrl: "http://localhost:8080/receta/random",
+  ingredientesUrl: "http://localhost:8080/ingrediente"
 };
 
 /*

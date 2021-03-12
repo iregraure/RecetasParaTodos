@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Nacionalidad } from '../../interfaces/nacionalidadInterface';
 import { User } from '../../interfaces/userInterface';
 import { Usuario } from '../../interfaces/usuarioInterface';
@@ -69,6 +70,25 @@ export class UserSignupComponent implements OnInit {
     this.loginService.registraUsuario(this.usuario).subscribe((resul: any) =>
       {
         this.router.navigate(['/login']);
+        Swal.fire(
+          {
+            title: 'Usuario creado',
+            text: 'Rediriendo al login',
+            icon: 'info',
+            timer: 2000
+          }
+        )
+      },
+      (error) =>
+      {
+        Swal.fire(
+          {
+            title: 'Error inesperado',
+            text: 'No se ha podido crear el usuario. Inténtelo de nuevo más tarde',
+            // text: 'Se ha producido un error inesperado',
+            icon: 'error'
+          }
+        )
       });
   }
 

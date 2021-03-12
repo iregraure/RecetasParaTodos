@@ -8,5 +8,6 @@
             <!-- <h3>Bienvenid@ {{user.username}}</h3> -->
         </div>
         <button class="headerButton" routerLink="/usuarios">Mis datos</button>
+        <button class="headerButton" routerLink="/bienvenida" (click)="tokenStorage.signOut()">Salir</button>
     </div>
 </nav>

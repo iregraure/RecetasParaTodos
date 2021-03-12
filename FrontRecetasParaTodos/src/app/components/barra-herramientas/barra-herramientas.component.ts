@@ -18,7 +18,7 @@ export class BarraHerramientasComponent implements OnInit {
 
   isUserLogged: boolean;
 
-  constructor(private tokenStorage: TokenStorageService,
+  constructor(public tokenStorage: TokenStorageService,
               private loginService: LoginService)
   { }
 

@@ -22,6 +22,11 @@ export class RecetasService {
     return this.http.get<Categoria[]>(environment.categoriasUrl);
   }
 
+  obtenerIngredientes(): Observable<string[]>
+  {
+    return this.http.get<string[]>(environment.ingredientesUrl);
+  }
+
   obtenerReceta(id: number): Observable<any>
   {
     return this.http.get<Receta>(`${environment.recetaUrl}${id}`);
